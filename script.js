@@ -48,4 +48,4 @@ const photos = [
         type: 'animals',
     },
 ];
-console.log("console log.")
+console.log("console log. ")

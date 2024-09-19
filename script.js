@@ -48,5 +48,4 @@ const photos = [
         type: 'animals',
     },
 ];
-
-console.log('whats poppin?');
+console.log("console log.")

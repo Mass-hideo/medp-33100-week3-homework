@@ -48,4 +48,47 @@ const photos = [
         type: 'animals',
     },
 ];
-console.log("console log. ")
+
+const gallery = document.querySelector('.gallery');
+const buttons = document.querySelectorAll('.filter-buttons button');
+let photoCount = 6;
+const loadButton = document.querySelector('#loadMore');
+
+photos.forEach((photo) => {
+    const imgEl = document.createElement('img');
+    imgEl.src = photo.url;
+    imgEl.classList.add(photo.type, 'photo');
+    imgEl.style.display = 'none';
+
+    gallery.appendChild(imgEl);
+});
+
+const allPhotos = document.querySelectorAll('.photo');
+const allPhotosArray = [...allPhotos];
+
+allPhotosArray.slice(0, photoCount).forEach(photo => {
+    photo.style.display = 'block';
+});
+
+loadButton.addEventListener('click', () => {
+    photoCount +=6;
+    allPhotosArray.slice(0, photoCount).forEach(photo => {
+        photo.style.display = 'block';
+    });
+})
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        const type = event.target.id;
+
+        allPhotos.forEach(photo => {
+            photo.style.display = 'block';
+
+            if(type !=='all'){
+                if (!photo.classList.contains(type)){
+                    photo.style.display = 'none';
+                }
+            }
+        });
+    })
+});
